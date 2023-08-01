@@ -324,7 +324,9 @@ console.log(add); <br>
                 <li>String</li>
                 <li>Boolean</li>
                 <li>undefined</li>
-                <li>Null <b>(null ki data type hmesha object hi dikhy gi) <mark>e.g:- let a=null; typeof a // object</mark></b> JS creator <b>(Brendan Eich)</b> said sorry that it was their mistake while creating js</li>
+                <li>Null <b>(null ki data type hmesha object hi dikhy gi) <mark>e.g:- let a=null; typeof a //
+                            object</mark></b> JS creator <b>(Brendan Eich)</b> said sorry that it was their mistake
+                    while creating js</li>
                 <li>Symbol</li>
             </ul>
         </li>
@@ -355,30 +357,82 @@ console.log(add); <br>
             </ul>
         </li>
     </ol>
-    <!-- 
+
+    <h1><q>Pass By Value Vs Pass By Reference</q></h1>
+    <ol>
+        <li>
+            <b>Pass by value</b>
+            <br>
+            <code>
+                let a=5;
+                let b=a;
+
+                console.log(a)
+                console.log(b)
+                <b><mark>
+                    // isme premitive values hoti hen or copy bhi primitive values hi hoti hen
+                </mark></b>
+            </code>
+        <li>
+            <b>Pass by Reference</b>
+            <br>
+            <code>
+               const obj={
+                name:"hamza",
+                pass:"hamza123"
+               } <br>
+               const obj2=obj <br>
+
+                console.log(obj) <br>
+                console.log(obj2) <br>
+<mark>// lekin obj2 ka data change krny se obj ka bhi change hojay ga Reason:- work on pass by reference if main reference change the real obj data is also change(obj2 ko obj ki memory ka ref dia gya) same thing happend with arrays create copy and push the value in array2 then it also change the array1</mark>  
+obj2.pass="chnage123" <br>
+console.log(obj) <br>
+                console.log(obj2) <br>
+                <br>
+                <b>Example</b>
+                let count=120; <br>
+                const person={
+                    name:"hamza",
+                    age:24,
+                } <br>
+                const hamza=(a,b)=>{
+                    a=234;
+                    b.age=36
+                } <br>
+                hamza(count,person) <br>
+                console.log(count) <br>
+                console.log(person.age) <br>
+                <mark>What would be the output of the age?</mark>
+            </code>
+        </li>
+        </li>
+    </ol>
+
+
     <script>
         "use strict"
-        var g = "hamza qureshi";
-        function a() {
-            var fa = "function a";
-            console.log(fa);
-            debugger
-            b()
-            console.log('lets see when i will be on console.');
-        }
-        function b() {
-            debugger
-            console.log('inside 2nd function');
-            c();
-        }
-        function c() {
-            debugger
-            console.log('inside 3rd function');
-        }
+        // var g = "hamza qureshi";
+        // function a() {
+        //     var fa = "function a";
+        //     console.log(fa);
+        //     debugger
+        //     b()
+        //     console.log('lets see when i will be on console.');
+        // }
+        // function b() {
+        //     debugger
+        //     console.log('inside 2nd function');
+        //     c();
+        // }
+        // function c() {
+        //     debugger
+        //     console.log('inside 3rd function');
+        // }
         // debugger
         // a()
-
-        // hoisting 
+        // <! --
+        // hoisting
         // sum(4, 5)
         // const sum = (a, b) => {
         //     add = a + b
@@ -386,23 +440,23 @@ console.log(add); <br>
         // }
 
         // console.log(value);
-        var value = 23
-        console.log(value);
-        var value = 24
+    //     var value = 23
+    //     console.log(value);
+    //     var value = 24
 
-        var a = "hamza qureshi.."
-        function first() {
-            var b = "how are you buddy?"
-            second()
+    //     var a = "hamza qureshi.."
+    //     function first() {
+    //         var b = "how are you buddy?"
+    //         second()
 
-            function second() {
-                var c = "i am your instructor!"
-                console.log(a + b + c);
-            }
-        }
-        first()
+    //         function second() {
+    //             var c = "i am your instructor!"
+    //             console.log(a + b + c);
+    //         }
+    //     }
+    //     first()
 
-    </script> -->
+    </script>
 </body>
 
 </html>
