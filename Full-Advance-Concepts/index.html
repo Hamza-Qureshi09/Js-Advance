@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Exec context & Exec Stack</title>
+    <title>Advance Js</title>
     <style>
         * {
             margin: 0%;
@@ -409,9 +409,22 @@ console.log(obj) <br>
         </li>
     </ol>
 
+    <div class="mainDiv">
+        <div class="centerDiv">
+            <h1>Welcome to typing speed test</h1>
+            <h2 id="msg"></h2>
+            <br>
+            <textarea  id="mywords" cols="30" rows="10" placeholder="Start the test..."></textarea>
+            <button id="btn" class="mainbtn">Start</button>
+        </div>
+    </div>
+
 
     <script>
         "use strict"
+        // let add = 23 + 34
+        // console.log(add)
+        // "use strict"
         // var g = "hamza qureshi";
         // function a() {
         //     var fa = "function a";
@@ -440,21 +453,95 @@ console.log(obj) <br>
         // }
 
         // console.log(value);
-    //     var value = 23
-    //     console.log(value);
-    //     var value = 24
+        //     var value = 23
+        //     console.log(value);
+        //     var value = 24
 
-    //     var a = "hamza qureshi.."
-    //     function first() {
-    //         var b = "how are you buddy?"
-    //         second()
+        //     var a = "hamza qureshi.."
+        //     function first() {
+        //         var b = "how are you buddy?"
+        //         second()
 
-    //         function second() {
-    //             var c = "i am your instructor!"
-    //             console.log(a + b + c);
-    //         }
-    //     }
-    //     first()
+        //         function second() {
+        //             var c = "i am your instructor!"
+        //             console.log(a + b + c);
+        //         }
+        //     }
+        //     first()
+
+        let setOfWords = [
+            "my name is hamza qureshi",
+            "and i am the full stack web and app developere",
+            "and currently learning devops"
+        ]
+
+        // access
+        const msg = document.getElementById('msg')
+        const typedWords = document.getElementById('mywords')
+        const btn = document.getElementById('btn')
+        let startTime, endTime;
+
+        const playGames = () => {
+            let randomNumber = Math.floor(Math.random() * setOfWords.length)
+            msg.innerText = setOfWords[randomNumber]
+            // start time
+
+            let date = new Date()
+            startTime = date.getTime()
+            btn.innerText = "Done"
+        }
+
+        const endPlay = () => {
+            let date = new Date()
+            endTime = date.getTime()
+            let totalTime = ((endTime - startTime) / 1000)
+            console.log(totalTime);
+
+            // logic
+            let totalStr = typedWords.value;
+            let wordCount = wordCounter(totalStr)
+
+            let speed = Math.round((wordCount / totalTime) * 60)
+            let finalMsg = `you typed total at ${speed} words per minutes. `
+
+            // check correct or wrong words
+            finalMsg += comparedWords(msg.innerText, totalStr)
+            msg.innerText = finalMsg
+
+        }
+
+        const comparedWords = (str1, str2) => {
+            let word1 = str1.split(" ")
+            let word2 = str2.split(" ")
+
+            let cnt = 0
+            word1.forEach((item, index) => {
+                if (item == word2[index]) {
+                    cnt++
+                }
+            })
+
+            let errorWords = (word1.length - cnt)
+            return (cnt+" correct out of "+ word1.length+ " words and the total number of errors are "+ errorWords + ".")
+        }
+
+        const wordCounter = (str) => {
+            let response = str.split(" ").length
+            return response
+        }
+
+        btn.addEventListener('click', () => {
+            // this means btn scope
+            console.log('comming',btn.textContent);
+            if (btn.textContent == 'Start') {
+                typedWords.disabled = false;
+                playGames()
+            } else if (btn.textContent == "Done") {
+                typedWords.disabled = true;
+                btn.innerText = "Start";
+                endPlay()
+            }
+        })
 
     </script>
 </body>
